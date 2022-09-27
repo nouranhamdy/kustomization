@@ -1,0 +1,11 @@
+namespace: staging
+resources:
+  - ../../base
+configMapGenerator:
+  - name: config 
+    behavior: replace
+    literals:
+      - env=staging
+      - name=customized
+      
+  
