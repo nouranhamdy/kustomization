@@ -1,13 +1,18 @@
 namespace: production
+# For example, https://github.com/kubernetes-sigs/kustomize//examples/multibases/dev/?ref=v1.0.6 
+# will essentially clone the git repo via HTTPS, checkout v1.0.6 and run kustomize build 
+# inside the examples/multibases/dev directory.
 resources:
-  - ../../base
-patches:
+  - https://github.com/nouranhamdy/api-k8s-rep//base1
+  - https://github.com/nouranhamdy/api-k8s-rep//base2
+patchesJson6902:
   - target:
-      kind: Deployment
-      name: nginx-deployment
+      version: v1
+      kind: NetworkPolicy
+      name: .*
     patch: |-
       - op: replace 
-        path: /spec/replicas
-        value: 4
+        path: /spec/ingress/0/from/0/ipBlock/cidr
+        value: 10.0.0.0/24
 patchesStrategicMerge:
   - patch-deployment.yaml
