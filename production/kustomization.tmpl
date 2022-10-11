@@ -1,9 +1,9 @@
-namespace: production
+namespace: ${namespace}
 # For example, https://github.com/kubernetes-sigs/kustomize//examples/multibases/dev/?ref=v1.0.6 
 # will essentially clone the git repo via HTTPS, checkout v1.0.6 and run kustomize build 
 # inside the examples/multibases/dev directory.
 resources:
-  - https://github.com/nouranhamdy/api-k8s-rep//base1
+  - ${REMOTEURL}
   - https://github.com/nouranhamdy/api-k8s-rep//base2
 patchesJson6902:
   - target:
