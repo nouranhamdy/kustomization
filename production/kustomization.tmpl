@@ -3,8 +3,7 @@ namespace: ${namespace}
 # will essentially clone the git repo via HTTPS, checkout v1.0.6 and run kustomize build 
 # inside the examples/multibases/dev directory.
 resources:
-  - ${URL}
-  - https://github.com/nouranhamdy/api-k8s-rep//base2
+  ${URL}
 patchesJson6902:
   - target:
       version: v1
